@@ -5,10 +5,11 @@ class PostsController < ApplicationController
 
   def create
     Post.create(content: params[:content])
-    redirect_to action: :index
+    redirect_to json: :index
   end
 
   def checked
+    # binding.pry
     post = Post.find(params[:id])
     if post.checked 
       post.update(checked: false)
